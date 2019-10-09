@@ -116,7 +116,7 @@ func New(config *Config) *GoogleProvider {
 				authInfo.Provider = provider.GetName()
 				authInfo.UID = schema.UID
 
-				authwhere = auth_identity.AuthIdentity{Basic: authInfo}
+				authwhere := auth_identity.AuthIdentity{Basic: authInfo}
 				if !tx.Model(authIdentity).Where(authwhere).Scan(&authInfo).RecordNotFound() {
 					return authInfo.ToClaims(), nil
 				}
